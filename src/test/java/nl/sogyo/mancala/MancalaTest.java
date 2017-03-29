@@ -9,7 +9,7 @@ public class MancalaTest {
     public void inhoudIs0BijStartBeurt(){
     	SubBakje bakje = new SubBakje();
     	bakje.startBeurt();
-        Assert.assertEquals(0, bakje.getInhoud());
+        Assert.assertEquals(0, bakje.getSteentjes());
     }
     
     @Test
@@ -23,21 +23,21 @@ public class MancalaTest {
     public void geefDoorZorgtVoorBuurmanPlus1(){
     	SubBakje bakje = new SubBakje();
     	bakje.startBeurt();
-    	Assert.assertEquals(5, bakje.getBuurman().getInhoud());
+    	Assert.assertEquals(5, bakje.getBuurman().getSteentjes());
     }
     
     @Test
     public void BuurmanVanBuurmanHeeftOokplus1(){
     	SubBakje bakje = new SubBakje();
     	bakje.startBeurt();
-    	Assert.assertEquals(5, bakje.getBuurman(2).getInhoud());
+    	Assert.assertEquals(5, bakje.getBuurman(2).getSteentjes());
     }
     
     @Test
     public void buurman5heeft4stenenNaBeurt(){
     	SubBakje bakje = new SubBakje();
     	bakje.startBeurt();
-    	Assert.assertEquals(4, bakje.getBuurman(5).getInhoud());
+    	Assert.assertEquals(4, bakje.getBuurman(5).getSteentjes());
     }
     
     @Test
@@ -49,8 +49,22 @@ public class MancalaTest {
     
     @Test
     public void alsStartBeurtBij3deBakjeDanHeeftKalaha1Steen(){
-    	SubBakje bakje = new SubBakje(3);
+    	SubBakje bakje = new SubBakje();
+    	bakje.getBuurman(2).startBeurt();
+    	Assert.assertEquals(1, bakje.getBuurman(6).getSteentjes());
+    }
+    
+    @Test
+    public void bakjeNaKalahaKrijgtOokEenSteenAlsKalahaDoorgeeft(){
+    	SubBakje bakje = new SubBakje();
+    	bakje.getBuurman(5).startBeurt();
+    	Assert.assertEquals(5, bakje.getBuurman(8).getSteentjes());
+    }
+    
+    @Test
+    public void kahalaTegenstanderKrijgtGeenSteen(){
+    	SubBakje bakje = new SubBakje(20);
     	bakje.startBeurt();
-    	Assert.assertEquals(1, bakje.getBuurman(4).getInhoud());
+    	Assert.assertEquals(0, bakje.getBuurman(13).getSteentjes());
     }
 }
