@@ -13,13 +13,6 @@ public class SubBakje {
 		}
 	}
 	
-	public int leeghalen() {
-		int hand = getInhoud();
-		setInhoud(0);
-		return hand;
-
-	}
-	
 	void setInhoud(int setter){
 		steentjes = setter;
 	}
@@ -28,7 +21,10 @@ public class SubBakje {
 		return steentjes;
 	}
 
-
+	private void addInhoud(int adder) {
+		steentjes += adder;		
+	}
+	
 	public SubBakje getBuurman() {
 		return buurman;
 	}
@@ -38,18 +34,18 @@ public class SubBakje {
 	}
 
 	private void doorgeven(int hand) {
-		buurman.ontvangen(hand);
+		buurman.addInhoud(1);
 		hand --;
 		if (hand>0){
 			buurman.doorgeven(hand);
 		}
 	}
-
-	private void ontvangen(int hand) {
-		addInhoud(1);
+	
+	public int leeghalen() {
+		int hand = getInhoud();
+		setInhoud(0);
+		return hand;
 	}
 
-	private void addInhoud(int adder) {
-		steentjes += adder;		
-	}
+
 }
