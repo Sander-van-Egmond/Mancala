@@ -38,6 +38,12 @@ public class MancalaTest {
     	SubBakje bakje = new SubBakje();
     	bakje.startBeurt();
     	Assert.assertEquals(4, bakje.getBuurman(5).getInhoud());
-
+    }
+    
+    @Test
+    public void buurman6IsKalaha(){
+    	SubBakje bakje = new SubBakje();
+    	bakje.startBeurt();
+    	Assert.assertTrue(bakje.getBuurman(6) instanceof Kalaha);
     }
 }
