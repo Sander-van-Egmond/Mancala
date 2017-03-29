@@ -3,6 +3,7 @@ package nl.sogyo.mancala;
 abstract class Bakje {
 	private int steentjes;
 	private Bakje buurman;
+	private Speler eigenaar;
 	
 	public Bakje(int steentjes){
 		this.steentjes = steentjes;
