@@ -30,7 +30,7 @@ public class MancalaTest {
     public void BuurmanVanBuurmanHeeftOokplus1(){
     	SubBakje bakje = new SubBakje();
     	bakje.startBeurt();
-    	Assert.assertEquals(5, bakje.getBuurman().getBuurman().getInhoud());
+    	Assert.assertEquals(5, bakje.getBuurman(2).getInhoud());
     }
     
     @Test
@@ -45,5 +45,12 @@ public class MancalaTest {
     	SubBakje bakje = new SubBakje();
     	bakje.startBeurt();
     	Assert.assertTrue(bakje.getBuurman(6) instanceof Kalaha);
+    }
+    
+    @Test
+    public void alsStartBeurtBij3deBakjeDanHeeftKalaha1Steen(){
+    	SubBakje bakje = new SubBakje(3);
+    	bakje.startBeurt();
+    	Assert.assertEquals(1, bakje.getBuurman(4).getInhoud());
     }
 }

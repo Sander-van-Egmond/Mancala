@@ -1,12 +1,12 @@
 package nl.sogyo.mancala;
 
 public class SubBakje extends Bakje {
-	private static int subBakjeTeller = 0;
+	private static int subBakjePos = 0;
 
 	public SubBakje(){
-		this.steentjes = 4;
-		subBakjeTeller ++;
-		if (subBakjeTeller%6!=0){
+		subBakjePos ++;
+		this.steentjes = 4;	
+		if (subBakjePos%6!=0){
 			this.buurman = new SubBakje();
 		}
 		else{
@@ -14,6 +14,17 @@ public class SubBakje extends Bakje {
 		}
 	}
 	
+	public SubBakje(int startPositie) {
+		subBakjePos = startPositie;
+		this.steentjes = 4;	
+		if (subBakjePos%6!=0){
+			this.buurman = new SubBakje();
+		}
+		else{
+			this.buurman = new Kalaha();
+		}
+	}
+
 	void setInhoud(int setter){
 		steentjes = setter;
 	}
