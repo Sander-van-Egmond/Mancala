@@ -28,6 +28,17 @@ public class SubBakje {
 	public SubBakje getBuurman() {
 		return buurman;
 	}
+	
+	public SubBakje getBuurman(int n){
+		SubBakje nthBuurman = getBuurman();
+		
+		while(n>1){
+			nthBuurman = nthBuurman.getBuurman();
+			n--;
+		}
+		
+		return nthBuurman;
+	}
 
 	public void startBeurt() {
 		doorgeven(leeghalen());

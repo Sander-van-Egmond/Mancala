@@ -32,4 +32,12 @@ public class MancalaTest {
     	bakje.startBeurt();
     	Assert.assertEquals(5, bakje.getBuurman().getBuurman().getInhoud());
     }
+    
+    @Test
+    public void buurman5heeft4stenenNaBeurt(){
+    	SubBakje bakje = new SubBakje();
+    	bakje.startBeurt();
+    	Assert.assertEquals(4, bakje.getBuurman(5).getInhoud());
+
+    }
 }
