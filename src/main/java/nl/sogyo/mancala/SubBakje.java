@@ -39,6 +39,10 @@ public class SubBakje {
 
 	private void doorgeven(int hand) {
 		buurman.ontvangen(hand);
+		hand --;
+		if (hand>0){
+			buurman.doorgeven(hand);
+		}
 	}
 
 	private void ontvangen(int hand) {

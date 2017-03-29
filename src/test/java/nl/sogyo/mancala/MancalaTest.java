@@ -25,4 +25,11 @@ public class MancalaTest {
     	bakje.startBeurt();
     	Assert.assertEquals(5, bakje.getBuurman().getInhoud());
     }
+    
+    @Test
+    public void BuurmanVanBuurmanHeeftOokplus1(){
+    	SubBakje bakje = new SubBakje();
+    	bakje.startBeurt();
+    	Assert.assertEquals(5, bakje.getBuurman().getBuurman().getInhoud());
+    }
 }
