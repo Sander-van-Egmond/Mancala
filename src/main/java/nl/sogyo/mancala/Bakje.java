@@ -39,8 +39,6 @@ abstract class Bakje {
 	public Bakje getOverBuurman() {
 		return null;
 	}
-
-
 	
 	public Bakje getBuurman(){
 		return buurman;
