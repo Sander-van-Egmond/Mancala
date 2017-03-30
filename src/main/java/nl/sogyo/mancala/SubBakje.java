@@ -30,6 +30,12 @@ public class SubBakje extends Bakje {
 		else{
 			super.doorgeven(hand, bron);
 		}
+		if(hand==0){
+			if (getSteentjes()==1){
+				leeghalen();
+			}
+		}
+		
 	}
 	
 	void setInhoud(int setter){

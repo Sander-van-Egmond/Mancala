@@ -74,5 +74,19 @@ public class MancalaTest {
     	bakje.startBeurt();
     	Assert.assertEquals(1, bakje.getSteentjes());
     }
- 
+    
+    @Test
+    public void alsDeBeurtEindigtInEenLeegVakjeAanJouwKantWordtDatBakjeLeeg(){
+    	SubBakje bakje = new SubBakje(13);
+    	bakje.startBeurt();
+    	Assert.assertEquals(0, bakje.getSteentjes());
+    }
+    
+    @Test
+    public void alsDeBeurtEindigtInEenLeegVakjeAanJouwKantWordtOverbuurmanLeeg(){
+    	SubBakje bakje = new SubBakje(13);
+    	bakje.startBeurt();
+    	Assert.assertEquals(0, bakje.getBuurman(12).getSteentjes());
+    }
+    
 }
