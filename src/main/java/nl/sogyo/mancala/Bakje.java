@@ -4,9 +4,11 @@ abstract class Bakje {
 	private int steentjes;
 	private Bakje buurman;
 	private Speler eigenaar;
+	private boolean kahala;
 	
 	public Bakje(int steentjes){
 		this.steentjes = steentjes;
+		this.setKahala(false);
 	}
 	
 	public void doorgeven(int hand, Speler bron) {
@@ -53,5 +55,13 @@ abstract class Bakje {
 
 	public void setEigenaar(Speler eigenaar) {
 		this.eigenaar = eigenaar;
+	}
+
+	public boolean isKahala() {
+		return kahala;
+	}
+
+	public void setKahala(boolean kahala) {
+		this.kahala = kahala;
 	}
 }

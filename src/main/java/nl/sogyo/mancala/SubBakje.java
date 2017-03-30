@@ -14,11 +14,21 @@ public class SubBakje extends Bakje {
 	
 	public SubBakje(SubBakje initBakje,int counter, Speler eigenaarRij){
 		super(4);
+		this.setEigenaar(eigenaarRij);
 		if (counter%6!=0){
 			this.setBuurman(new SubBakje(initBakje,counter-1,eigenaarRij));
 		}
 		else{
-			this.setBuurman(new Kalaha(initBakje,counter-1,eigenaarRij));
+			this.setBuurman(new Kalaha(initBakje,counter,eigenaarRij));
+		}
+	}
+	
+	public void doorgeven(int hand, Speler bron) {
+		if (getBuurman().getEigenaar() != bron && getBuurman().isKahala()){
+			getBuurman().doorgeven(hand,bron);
+		}
+		else{
+			super.doorgeven(hand, bron);
 		}
 	}
 	
@@ -27,7 +37,8 @@ public class SubBakje extends Bakje {
 	}
 
 	public void startBeurt() {
-		doorgeven(leeghalen(),getEigenaar());
+		int hand = leeghalen();
+		doorgeven(hand,getEigenaar());
 	}
 
 	public int leeghalen() {

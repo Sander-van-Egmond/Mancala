@@ -68,5 +68,11 @@ public class MancalaTest {
     	Assert.assertEquals(0, bakje.getBuurman(13).getSteentjes());
     }
     
+    @Test
+    public void deBronMoetOokSteentjesKrijgenAlsHijZichzelfUitdeelt(){
+    	SubBakje bakje = new SubBakje(15);
+    	bakje.startBeurt();
+    	Assert.assertEquals(1, bakje.getSteentjes());
+    }
  
 }
