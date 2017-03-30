@@ -109,4 +109,11 @@ public class MancalaTest {
     	bakje.startBeurt();
     	Assert.assertFalse(bakje.getEigenaar().getBeurt());
     }
+    
+    @Test
+    public void spelerIsNogSteedsAanDeBeurtAlsLaatsteSteenInEigenMancalaValt(){
+    	SubBakje bakje = new SubBakje();
+    	bakje.getBuurman(2).startBeurt();
+    	Assert.assertTrue(bakje.getEigenaar().getBeurt());
+    }
 }

@@ -23,24 +23,9 @@ public class SubBakje extends Bakje {
 		}
 	}
 	
-	public void doorgeven(int hand, Speler bron) {
-		if (getBuurman().getEigenaar() != bron && getBuurman().isKahala()){
-			getBuurman().doorgeven(hand,bron);
-		}
-		else{
-			super.doorgeven(hand, bron);
-		}
-		if(hand==0){
-			if (getSteentjes()==1){
-				hand = leeghalen() + getOverBuurman().leeghalen();
-				getBuurman(stepsToKahala(0)).addInhoud(hand);
-			}
-		}
-	}
-	
-	public SubBakje getOverBuurman() {
+	public Bakje getOverBuurman() {
 		int steps = stepsToKahala(0);
-		return (SubBakje) getBuurman(steps*2);
+		return getBuurman(steps*2);
 	}
 	
 	public int stepsToKahala(int counter){
@@ -51,6 +36,27 @@ public class SubBakje extends Bakje {
 			return (((SubBakje) getBuurman()).stepsToKahala(counter+1));
 		}
 	}
+	
+	public void doorgeven(int hand, Speler bron) {
+		if (getBuurman().getEigenaar() != bron && getBuurman().isKahala()){
+			getBuurman().doorgeven(hand,bron);
+		}
+		else if (hand==1 && getBuurman().isKahala()){
+			wisselBeurt();
+			super.doorgeven(hand, bron);
+		}
+		else{
+			super.doorgeven(hand, bron);
+		}
+		if(hand==0){
+			if (getSteentjes()==1){
+				hand = leeghalen() + ((SubBakje) getOverBuurman()).leeghalen();
+				getBuurman(stepsToKahala(0)).addInhoud(hand);
+			}
+		}
+	}
+	
+
 
 	void setInhoud(int setter){
 		setSteentjes(setter);
@@ -59,10 +65,10 @@ public class SubBakje extends Bakje {
 	public void startBeurt() {
 		int hand = leeghalen();
 		doorgeven(hand,getEigenaar());
-		getOverBuurman().getEigenaar().setBeurt(true);
-		getEigenaar().setBeurt(false);
+		wisselBeurt();
 	}
 
+	
 	public int leeghalen() {
 		int hand = getSteentjes();
 		setInhoud(0);

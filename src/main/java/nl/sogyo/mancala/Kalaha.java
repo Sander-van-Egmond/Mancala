@@ -13,4 +13,9 @@ public class Kalaha extends Bakje {
 			this.setBuurman(initBakje);
 		}	
 	}
+	
+	public Bakje getOverBuurman() {
+		return getBuurman(7);
+	}
+	
 }

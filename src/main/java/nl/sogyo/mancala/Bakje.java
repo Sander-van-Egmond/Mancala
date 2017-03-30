@@ -16,7 +16,6 @@ abstract class Bakje {
 			getBuurman().addInhoud(1);
 			getBuurman().doorgeven(hand-1,bron);
 		}
-
 	}
 	
 	public void addInhoud(int adder) {
@@ -31,6 +30,17 @@ abstract class Bakje {
 			return buurman.getBuurman(n-1);
 		}
 	}
+	
+	public void wisselBeurt(){
+		getOverBuurman().getEigenaar().switchBeurt();
+		getEigenaar().switchBeurt();
+	}
+	
+	public Bakje getOverBuurman() {
+		return null;
+	}
+
+
 	
 	public Bakje getBuurman(){
 		return buurman;
