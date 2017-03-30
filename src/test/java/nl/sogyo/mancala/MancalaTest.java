@@ -95,4 +95,11 @@ public class MancalaTest {
     	bakje.startBeurt();
     	Assert.assertEquals(7, bakje.getBuurman(6).getSteentjes());
     }
+    
+    @Test
+    public void andereSpelerIsAanDeBeurtNaEenBeurt(){
+    	SubBakje bakje = new SubBakje();
+    	bakje.startBeurt();
+    	Assert.assertTrue(bakje.getOverBuurman().getEigenaar().getBeurt());
+    }
 }

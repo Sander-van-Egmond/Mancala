@@ -10,6 +10,11 @@ public class Speler {
 	public boolean getBeurt() {
 		return beurt;
 	}
+	
+	public void setBeurt(boolean beurt) {
+		this.beurt = beurt;
+	}
+
 
 	
 }

@@ -59,6 +59,7 @@ public class SubBakje extends Bakje {
 	public void startBeurt() {
 		int hand = leeghalen();
 		doorgeven(hand,getEigenaar());
+		getOverBuurman().getEigenaar().setBeurt(true);
 	}
 
 	public int leeghalen() {
