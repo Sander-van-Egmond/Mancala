@@ -116,4 +116,11 @@ public class MancalaTest {
     	bakje.getBuurman(2).startBeurt();
     	Assert.assertTrue(bakje.getEigenaar().getBeurt());
     }
+    
+    @Test
+    public void spelerIsNogAanDeBeurtAlsHijEenLeegBakjeKiest(){
+    	SubBakje bakje = new SubBakje(0);
+    	bakje.startBeurt();
+    	Assert.assertTrue(bakje.getEigenaar().getBeurt());
+    }
 }
