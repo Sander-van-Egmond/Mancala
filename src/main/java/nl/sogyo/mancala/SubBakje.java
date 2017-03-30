@@ -3,21 +3,22 @@ package nl.sogyo.mancala;
 public class SubBakje extends Bakje {
 
 	public SubBakje(){
-		super(4);
-		this.setBuurman(new SubBakje(this,11));
+		this(4);
 	}
 	
 	public SubBakje(int steentjes){
 		super(steentjes);
-		this.setBuurman(new SubBakje(this,11));
+		this.setEigenaar(new Speler(true));
+		this.setBuurman(new SubBakje(this,10,this.getEigenaar()));
 	}
-	public SubBakje(SubBakje initBakje,int counter){
+	
+	public SubBakje(SubBakje initBakje,int counter, Speler eigenaarRij){
 		super(4);
-		if (counter%7!=0){
-			this.setBuurman(new SubBakje(initBakje,counter-1));
+		if (counter%6!=0){
+			this.setBuurman(new SubBakje(initBakje,counter-1,eigenaarRij));
 		}
 		else{
-			this.setBuurman(new Kalaha(initBakje,counter-1));
+			this.setBuurman(new Kalaha(initBakje,counter-1,eigenaarRij));
 		}
 	}
 	
@@ -25,9 +26,8 @@ public class SubBakje extends Bakje {
 		setSteentjes(setter);
 	}
 
-
 	public void startBeurt() {
-		doorgeven(leeghalen());
+		doorgeven(leeghalen(),getEigenaar());
 	}
 
 	public int leeghalen() {

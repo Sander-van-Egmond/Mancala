@@ -67,4 +67,6 @@ public class MancalaTest {
     	bakje.startBeurt();
     	Assert.assertEquals(0, bakje.getBuurman(13).getSteentjes());
     }
+    
+ 
 }

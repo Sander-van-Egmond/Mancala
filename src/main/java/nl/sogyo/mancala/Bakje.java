@@ -9,10 +9,10 @@ abstract class Bakje {
 		this.steentjes = steentjes;
 	}
 	
-	public void doorgeven(int hand) {
+	public void doorgeven(int hand, Speler bron) {
 		if (hand>0){
 			getBuurman().addInhoud(1);
-			getBuurman().doorgeven(hand-1);
+			getBuurman().doorgeven(hand-1,bron);
 		}
 	}
 	
@@ -20,7 +20,6 @@ abstract class Bakje {
 		setSteentjes(getSteentjes() + adder);		
 	}
 	
-
 	public Bakje getBuurman(int n){
 		if (n==1){
 			return buurman;
@@ -46,5 +45,13 @@ abstract class Bakje {
 
 	public void setBuurman(Bakje buurman) {
 		this.buurman = buurman;
+	}
+
+	public Speler getEigenaar() {
+		return eigenaar;
+	}
+
+	public void setEigenaar(Speler eigenaar) {
+		this.eigenaar = eigenaar;
 	}
 }
