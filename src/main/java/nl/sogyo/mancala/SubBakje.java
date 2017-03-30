@@ -63,7 +63,7 @@ public class SubBakje extends Bakje {
 	}
 
 	public void startBeurt() {
-		if (getSteentjes()!=0){
+		if (getSteentjes()!=0 && getEigenaar().getBeurt()){
 			int hand = leeghalen();
 			doorgeven(hand,getEigenaar());
 			wisselBeurt();
