@@ -88,4 +88,11 @@ public class MancalaTest {
     	bakje.startBeurt();
     	Assert.assertEquals(0, bakje.getBuurman(12).getSteentjes());
     }
+    
+    @Test
+    public void alsDeBeurtEindigtInEenLeegVakjeAanJouwKantKomenSteentjesVanOverBuurmanEnBakjeInJouwMancala(){
+    	SubBakje bakje = new SubBakje(13);
+    	bakje.startBeurt();
+    	Assert.assertEquals(7, bakje.getBuurman(6).getSteentjes());
+    }
 }
