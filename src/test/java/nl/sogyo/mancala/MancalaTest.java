@@ -88,5 +88,4 @@ public class MancalaTest {
     	bakje.startBeurt();
     	Assert.assertEquals(0, bakje.getBuurman(12).getSteentjes());
     }
-    
 }

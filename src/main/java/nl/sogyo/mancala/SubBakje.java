@@ -33,11 +33,26 @@ public class SubBakje extends Bakje {
 		if(hand==0){
 			if (getSteentjes()==1){
 				leeghalen();
+				getOverBuurman().leeghalen();
 			}
 		}
 		
 	}
 	
+	public SubBakje getOverBuurman() {
+		int steps = stepsToKahala(0);
+		return (SubBakje) getBuurman(steps*2);
+	}
+	
+	public int stepsToKahala(int counter){
+		if (getBuurman().isKahala()){
+			return counter+1;
+		}
+		else{
+			return (((SubBakje) getBuurman()).stepsToKahala(counter+1));
+		}
+	}
+
 	void setInhoud(int setter){
 		setSteentjes(setter);
 	}
