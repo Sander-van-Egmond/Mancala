@@ -102,4 +102,11 @@ public class MancalaTest {
     	bakje.startBeurt();
     	Assert.assertTrue(bakje.getOverBuurman().getEigenaar().getBeurt());
     }
+    
+    @Test
+    public void DezeSpelerIsNietMeerAanDeBeurtNaEenBeurt(){
+    	SubBakje bakje = new SubBakje();
+    	bakje.startBeurt();
+    	Assert.assertFalse(bakje.getEigenaar().getBeurt());
+    }
 }
