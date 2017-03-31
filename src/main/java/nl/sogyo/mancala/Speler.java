@@ -16,7 +16,6 @@ public class Speler {
 	}
 
 	public void switchBeurt(){
-		this.beurt ^= true;
+		this.beurt = !this.beurt;
 	}
-	
 }

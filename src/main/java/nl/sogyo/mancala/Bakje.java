@@ -36,6 +36,17 @@ abstract class Bakje {
 		getEigenaar().switchBeurt();
 	}
 	
+	public boolean checkEinde(Bakje bron){
+		boolean einde = true;
+		if (getEigenaar().getBeurt() && getSteentjes() != 0 && !isKahala()){
+			return false;
+		}
+		if (getBuurman() != bron){
+			einde =  getBuurman().checkEinde(bron);
+		}
+		return einde;
+	}
+	
 	public Bakje getOverBuurman() {
 		return null; // overridden
 	}

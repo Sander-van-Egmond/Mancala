@@ -44,7 +44,7 @@ public class MancalaTest {
     public void buurman6IsKalaha(){
     	SubBakje bakje = new SubBakje();
     	bakje.startBeurt();
-    	Assert.assertTrue(bakje.getBuurman(6) instanceof Kalaha);
+    	Assert.assertTrue(bakje.getBuurman(6).isKahala());
     }
     
     @Test
@@ -129,5 +129,17 @@ public class MancalaTest {
     	SubBakje bakje = new SubBakje(0);
     	bakje.getBuurman(8).startBeurt();
     	Assert.assertTrue(bakje.getEigenaar().getBeurt());
+    }
+    
+    @Test
+    public void alsAlleBakjesLeegZijnAan1KantDanIsDieSpelerNietMeerAanDeBeurt(){
+    	SubBakje bakje = new SubBakje(0);
+    	bakje.getBuurman(1).setSteentjes(0);
+    	bakje.getBuurman(2).setSteentjes(0);
+    	bakje.getBuurman(3).setSteentjes(0);
+    	bakje.getBuurman(4).setSteentjes(0);
+    	bakje.getBuurman(5).setSteentjes(1);
+    	bakje.getBuurman(5).startBeurt();
+    	Assert.assertFalse(bakje.getEigenaar().getBeurt());
     }
 }

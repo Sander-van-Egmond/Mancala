@@ -17,5 +17,4 @@ public class Kalaha extends Bakje {
 	public Bakje getOverBuurman() {
 		return getBuurman(7);
 	}
-	
 }

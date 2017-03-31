@@ -56,8 +56,6 @@ public class SubBakje extends Bakje {
 		}
 	}
 	
-
-
 	void setInhoud(int setter){
 		setSteentjes(setter);
 	}
@@ -67,8 +65,15 @@ public class SubBakje extends Bakje {
 			int hand = leeghalen();
 			doorgeven(hand,getEigenaar());
 			wisselBeurt();
+			if (checkEinde(this) && getEigenaar().getBeurt()){
+				getEigenaar().switchBeurt();
+			}
+			if (checkEinde(this) && getOverBuurman().getEigenaar().getBeurt()){
+				getOverBuurman().getEigenaar().switchBeurt();
+			}
 		}
 	}
+	
 
 	
 	public int leeghalen() {
@@ -76,5 +81,4 @@ public class SubBakje extends Bakje {
 		setInhoud(0);
 		return hand;
 	}
-
 }
