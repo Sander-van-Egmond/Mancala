@@ -1,5 +1,7 @@
 package nl.sogyo.mancala;
 
+import java.util.Arrays;
+
 public class SubBakje extends Bakje {
 
 	public SubBakje(){
@@ -7,19 +9,34 @@ public class SubBakje extends Bakje {
 	}
 	
 	public SubBakje(int steentjes){
-		super(steentjes);
-		this.setEigenaar(new Speler(true));
-		this.setBuurman(new SubBakje(this,10,this.getEigenaar()));
+		this(new int[]{steentjes});
 	}
 	
-	public SubBakje(SubBakje initBakje,int counter, Speler eigenaarRij){
-		super(4);
+	public SubBakje(int[] array){
+		super(array[0]);
+		int[] newArray = Arrays.copyOfRange(array, 1, array.length);
+		if (newArray.length == 0){
+			newArray = new int[]{4};
+		}
+		this.setEigenaar(new Speler(true));
+		this.setBuurman(new SubBakje(this,10,this.getEigenaar() ,newArray));
+	}
+	
+	public SubBakje(SubBakje initBakje,int counter, Speler eigenaarRij, int[] array){
+		super(array[0]);
 		this.setEigenaar(eigenaarRij);
+		int[] newArray = Arrays.copyOfRange(array, 1, array.length);
 		if (counter%6!=0){
-			this.setBuurman(new SubBakje(initBakje,counter-1,eigenaarRij));
+			if (newArray.length == 0){
+				newArray = new int[]{4};
+			}
+			this.setBuurman(new SubBakje(initBakje,counter-1,eigenaarRij, newArray));
 		}
 		else{
-			this.setBuurman(new Kalaha(initBakje,counter,eigenaarRij));
+			if (newArray.length == 0){
+				newArray = new int[]{0};
+			}
+			this.setBuurman(new Kalaha(initBakje,counter,eigenaarRij, newArray));
 		}
 	}
 	

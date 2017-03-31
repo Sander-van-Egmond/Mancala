@@ -133,12 +133,7 @@ public class MancalaTest {
     
     @Test
     public void alsAlleBakjesLeegZijnAan1KantDanIsDieSpelerNietMeerAanDeBeurt(){
-    	SubBakje bakje = new SubBakje(0);
-    	bakje.getBuurman(1).setSteentjes(0);
-    	bakje.getBuurman(2).setSteentjes(0);
-    	bakje.getBuurman(3).setSteentjes(0);
-    	bakje.getBuurman(4).setSteentjes(0);
-    	bakje.getBuurman(5).setSteentjes(1);
+    	SubBakje bakje = new SubBakje(new int[]{0,0,0,0,0,1});
     	bakje.getBuurman(5).startBeurt();
     	Assert.assertFalse(bakje.getEigenaar().getBeurt());
     }
