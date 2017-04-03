@@ -7,7 +7,7 @@ public class Speler {
 		this.beurt = beurt;
 	}
 	
-	public boolean getBeurt() {
+	public boolean isBeurt() {
 		return beurt;
 	}
 	

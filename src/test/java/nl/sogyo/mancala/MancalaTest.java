@@ -100,41 +100,48 @@ public class MancalaTest {
     public void andereSpelerIsAanDeBeurtNaEenBeurt(){
     	SubBakje bakje = new SubBakje();
     	bakje.startBeurt();
-    	Assert.assertTrue(bakje.getOverBuurman().getEigenaar().getBeurt());
+    	Assert.assertTrue(bakje.getOverBuurman().getEigenaar().isBeurt());
     }
     
     @Test
     public void DezeSpelerIsNietMeerAanDeBeurtNaEenBeurt(){
     	SubBakje bakje = new SubBakje();
     	bakje.startBeurt();
-    	Assert.assertFalse(bakje.getEigenaar().getBeurt());
+    	Assert.assertFalse(bakje.getEigenaar().isBeurt());
     }
     
     @Test
     public void spelerIsNogSteedsAanDeBeurtAlsLaatsteSteenInEigenMancalaValt(){
     	SubBakje bakje = new SubBakje();
     	bakje.getBuurman(2).startBeurt();
-    	Assert.assertTrue(bakje.getEigenaar().getBeurt());
+    	Assert.assertTrue(bakje.getEigenaar().isBeurt());
     }
     
     @Test
     public void spelerIsNogAanDeBeurtAlsHijEenLeegBakjeKiest(){
     	SubBakje bakje = new SubBakje(0);
     	bakje.startBeurt();
-    	Assert.assertTrue(bakje.getEigenaar().getBeurt());
+    	Assert.assertTrue(bakje.getEigenaar().isBeurt());
     }
     
     @Test
     public void spelerIsNogAanDeBeurtAlsHijEenBakjeAanDeOverkantKiest(){
     	SubBakje bakje = new SubBakje(0);
     	bakje.getBuurman(8).startBeurt();
-    	Assert.assertTrue(bakje.getEigenaar().getBeurt());
+    	Assert.assertTrue(bakje.getEigenaar().isBeurt());
     }
     
     @Test
     public void alsAlleBakjesLeegZijnAan1KantDanIsDieSpelerNietMeerAanDeBeurt(){
     	SubBakje bakje = new SubBakje(new int[]{0,0,0,0,0,1});
     	bakje.getBuurman(5).startBeurt();
-    	Assert.assertFalse(bakje.getEigenaar().getBeurt());
+    	Assert.assertFalse(bakje.getEigenaar().isBeurt());
+    }
+    
+    @Test
+    public void alsDeBeurtEindigtInEenLeegVakjeAanDeAndereKantKomenSteentjesVanOverBuurmanNietInJouwMancala(){
+    	SubBakje bakje = new SubBakje(new int[]{4,4,4,4,4,4,0,4,4,0});
+    	bakje.getBuurman(5).startBeurt();
+    	Assert.assertEquals(4, bakje.getBuurman(3).getSteentjes());
     }
 }

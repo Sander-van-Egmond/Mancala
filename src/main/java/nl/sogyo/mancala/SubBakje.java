@@ -66,7 +66,7 @@ public class SubBakje extends Bakje {
 			super.doorgeven(hand, bron);
 		}
 		if(hand==0){
-			if (getSteentjes()==1){
+			if (getSteentjes()==1 && getEigenaar().isBeurt()){
 				hand = leeghalen() + ((SubBakje) getOverBuurman()).leeghalen();
 				getBuurman(stepsToKahala(0)).addInhoud(hand);
 			}
@@ -78,14 +78,14 @@ public class SubBakje extends Bakje {
 	}
 
 	public void startBeurt() {
-		if (getSteentjes()!=0 && getEigenaar().getBeurt()){
+		if (getSteentjes()!=0 && getEigenaar().isBeurt()){
 			int hand = leeghalen();
 			doorgeven(hand,getEigenaar());
 			wisselBeurt();
-			if (checkEinde(this) && getEigenaar().getBeurt()){
+			if (checkEinde(this) && getEigenaar().isBeurt()){
 				getEigenaar().switchBeurt();
 			}
-			if (checkEinde(this) && getOverBuurman().getEigenaar().getBeurt()){
+			if (checkEinde(this) && getOverBuurman().getEigenaar().isBeurt()){
 				getOverBuurman().getEigenaar().switchBeurt();
 			}
 		}

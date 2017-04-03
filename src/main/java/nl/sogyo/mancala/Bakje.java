@@ -38,7 +38,7 @@ abstract class Bakje {
 	
 	public boolean checkEinde(Bakje bron){
 		boolean einde = true;
-		if (getEigenaar().getBeurt() && getSteentjes() != 0 && !isKahala()){
+		if (getEigenaar().isBeurt() && getSteentjes() != 0 && !isKahala()){
 			return false;
 		}
 		if (getBuurman() != bron){
@@ -47,9 +47,7 @@ abstract class Bakje {
 		return einde;
 	}
 	
-	public Bakje getOverBuurman() {
-		return null; // overridden
-	}
+	public abstract Bakje getOverBuurman();
 	
 	public Bakje getBuurman(){
 		return buurman;
