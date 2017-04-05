@@ -31,11 +31,9 @@ public class Mancala{
 			bakje.startBeurt();
 			}
 		else{
-			bakje.getBuurman(answer).startBeurt();
+			((SubBakje) bakje.getBuurman(answer)).startBeurt();
 			}
 		}
-		
-	
 
 	public int getBakje(int nummer) {
 		Bakje bakje;

@@ -52,8 +52,6 @@ abstract class Bakje {
 	public Bakje getBuurman(){
 		return buurman;
 	}
-	
-	public void startBeurt(){	}
 
 	public int getSteentjes() {
 		return steentjes;

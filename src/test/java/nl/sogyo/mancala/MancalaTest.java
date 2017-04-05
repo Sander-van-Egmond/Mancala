@@ -50,14 +50,14 @@ public class MancalaTest {
     @Test
     public void alsStartBeurtBij3deBakjeDanHeeftKalaha1Steen(){
     	SubBakje bakje = new SubBakje();
-    	bakje.getBuurman(2).startBeurt();
+    	((SubBakje) bakje.getBuurman(2)).startBeurt();
     	Assert.assertEquals(1, bakje.getBuurman(6).getSteentjes());
     }
     
     @Test
     public void bakjeNaKalahaKrijgtOokEenSteenAlsKalahaDoorgeeft(){
     	SubBakje bakje = new SubBakje();
-    	bakje.getBuurman(5).startBeurt();
+    	((SubBakje) bakje.getBuurman(5)).startBeurt();
     	Assert.assertEquals(5, bakje.getBuurman(8).getSteentjes());
     }
     
@@ -113,7 +113,7 @@ public class MancalaTest {
     @Test
     public void spelerIsNogSteedsAanDeBeurtAlsLaatsteSteenInEigenMancalaValt(){
     	SubBakje bakje = new SubBakje();
-    	bakje.getBuurman(2).startBeurt();
+    	((SubBakje) bakje.getBuurman(2)).startBeurt();
     	Assert.assertTrue(bakje.getEigenaar().isBeurt());
     }
     
@@ -127,21 +127,21 @@ public class MancalaTest {
     @Test
     public void spelerIsNogAanDeBeurtAlsHijEenBakjeAanDeOverkantKiest(){
     	SubBakje bakje = new SubBakje(0);
-    	bakje.getBuurman(8).startBeurt();
+    	((SubBakje) bakje.getBuurman(8)).startBeurt();
     	Assert.assertTrue(bakje.getEigenaar().isBeurt());
     }
     
     @Test
     public void alsAlleBakjesLeegZijnAan1KantDanIsDieSpelerNietMeerAanDeBeurt(){
     	SubBakje bakje = new SubBakje(new int[]{0,0,0,0,0,1});
-    	bakje.getBuurman(5).startBeurt();
+    	((SubBakje) bakje.getBuurman(5)).startBeurt();
     	Assert.assertFalse(bakje.getEigenaar().isBeurt());
     }
     
     @Test
     public void alsDeBeurtEindigtInEenLeegVakjeAanDeAndereKantKomenSteentjesVanOverBuurmanNietInJouwMancala(){
     	SubBakje bakje = new SubBakje(new int[]{4,4,4,4,4,4,0,4,4,0});
-    	bakje.getBuurman(5).startBeurt();
+    	((SubBakje) bakje.getBuurman(5)).startBeurt();
     	Assert.assertEquals(4, bakje.getBuurman(3).getSteentjes());
     }
 }

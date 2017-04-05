@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 public class Kalaha extends Bakje {
 	
-	
 	public Kalaha(SubBakje initBakje, int counter,Speler eigenaarRij, int[] array){
 		super(array[0]);
 		int[] newArray = Arrays.copyOfRange(array, 1, array.length);

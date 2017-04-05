@@ -91,8 +91,6 @@ public class SubBakje extends Bakje {
 		}
 	}
 	
-
-	
 	public int leeghalen() {
 		int hand = getSteentjes();
 		setInhoud(0);
