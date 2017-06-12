@@ -4,15 +4,15 @@ import java.util.Arrays;
 
 public class SubBakje extends Bakje {
 
-	public SubBakje(){
+	SubBakje(){
 		this(4);
 	}
 	
-	public SubBakje(int steentjes){
+	SubBakje(int steentjes){
 		this(new int[]{steentjes});
 	}
 	
-	public SubBakje(int[] array){
+	SubBakje(int[] array){
 		super(array[0]);
 		int[] newArray = Arrays.copyOfRange(array, 1, array.length);
 		if (newArray.length == 0){
@@ -22,7 +22,7 @@ public class SubBakje extends Bakje {
 		this.setBuurman(new SubBakje(this,10,this.getEigenaar() ,newArray));
 	}
 	
-	public SubBakje(SubBakje initBakje,int counter, Speler eigenaarRij, int[] array){
+	SubBakje(SubBakje initBakje,int counter, Speler eigenaarRij, int[] array){
 		super(array[0]);
 		this.setEigenaar(eigenaarRij);
 		int[] newArray = Arrays.copyOfRange(array, 1, array.length);
@@ -40,12 +40,12 @@ public class SubBakje extends Bakje {
 		}
 	}
 	
-	public Bakje getOverBuurman() {
+	Bakje getOverBuurman() {
 		int steps = stepsToKahala(0);
 		return getBuurman(steps*2);
 	}
 	
-	public int stepsToKahala(int counter){
+	int stepsToKahala(int counter){
 		if (getBuurman().isKahala()){
 			return counter+1;
 		}
@@ -54,7 +54,7 @@ public class SubBakje extends Bakje {
 		}
 	}
 	
-	public void doorgeven(int hand, Speler bron) {
+	void doorgeven(int hand, Speler bron) {
 		if (getBuurman().getEigenaar() != bron && getBuurman().isKahala()){
 			getBuurman().doorgeven(hand,bron);
 		}
@@ -77,7 +77,7 @@ public class SubBakje extends Bakje {
 		setSteentjes(setter);
 	}
 
-	public void startBeurt() {
+	void startBeurt() {
 		if (getSteentjes()!=0 && getEigenaar().isBeurt()){
 			int hand = leeghalen();
 			doorgeven(hand,getEigenaar());
@@ -91,7 +91,7 @@ public class SubBakje extends Bakje {
 		}
 	}
 	
-	public int leeghalen() {
+	int leeghalen() {
 		int hand = getSteentjes();
 		setInhoud(0);
 		return hand;
