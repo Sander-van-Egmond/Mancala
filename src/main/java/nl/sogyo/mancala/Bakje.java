@@ -6,23 +6,23 @@ abstract class Bakje {
 	private Speler eigenaar;
 	private boolean kahala;
 	
-	public Bakje(int steentjes){
+	Bakje(int steentjes){
 		this.steentjes = steentjes;
 		this.setKahala(false);
 	}
 	
-	public void doorgeven(int hand, Speler bron) {
+	void doorgeven(int hand, Speler bron) {
 		if (hand>0){
 			getBuurman().addInhoud(1);
 			getBuurman().doorgeven(hand-1,bron);
 		}
 	}
 	
-	public void addInhoud(int adder) {
+	void addInhoud(int adder) {
 		setSteentjes(getSteentjes() + adder);		
 	}
 	
-	public Bakje getBuurman(int n){
+	Bakje getBuurman(int n){
 		if (n==1){
 			return buurman;
 		}
@@ -31,12 +31,12 @@ abstract class Bakje {
 		}
 	}
 	
-	public void wisselBeurt(){
+	void wisselBeurt(){
 		getOverBuurman().getEigenaar().switchBeurt();
 		getEigenaar().switchBeurt();
 	}
 	
-	public boolean checkEinde(Bakje bron){
+	boolean checkEinde(Bakje bron){
 		boolean einde = true;
 		if (getEigenaar().isBeurt() && getSteentjes() != 0 && !isKahala()){
 			return false;
@@ -47,37 +47,37 @@ abstract class Bakje {
 		return einde;
 	}
 	
-	public abstract Bakje getOverBuurman();
+	abstract Bakje getOverBuurman();
 	
-	public Bakje getBuurman(){
+	Bakje getBuurman(){
 		return buurman;
 	}
 
-	public int getSteentjes() {
+	int getSteentjes() {
 		return steentjes;
 	}
 
-	public void setSteentjes(int steentjes) {
+	void setSteentjes(int steentjes) {
 		this.steentjes = steentjes;
 	}
 
-	public void setBuurman(Bakje buurman) {
+	void setBuurman(Bakje buurman) {
 		this.buurman = buurman;
 	}
 
-	public Speler getEigenaar() {
+	Speler getEigenaar() {
 		return eigenaar;
 	}
 
-	public void setEigenaar(Speler eigenaar) {
+	void setEigenaar(Speler eigenaar) {
 		this.eigenaar = eigenaar;
 	}
 
-	public boolean isKahala() {
+	boolean isKahala() {
 		return kahala;
 	}
 
-	public void setKahala(boolean kahala) {
+	void setKahala(boolean kahala) {
 		this.kahala = kahala;
 	}
 }
