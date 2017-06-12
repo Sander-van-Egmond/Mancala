@@ -3,19 +3,19 @@ package nl.sogyo.mancala;
 public class Speler {
 	private boolean beurt;
 
-	public Speler(boolean beurt){
+	Speler(boolean beurt){
 		this.beurt = beurt;
 	}
 	
-	public boolean isBeurt() {
+	boolean isBeurt() {
 		return beurt;
 	}
 	
-	public void setBeurt(boolean beurt) {
+	void setBeurt(boolean beurt) {
 		this.beurt = beurt;
 	}
 
-	public void switchBeurt(){
+	void switchBeurt(){
 		this.beurt = !this.beurt;
 	}
 }
